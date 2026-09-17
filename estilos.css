@@ -1,0 +1,653 @@
+/* ==================================================
+   MASAYA · Guía de viaje — Diseño editorial
+   ================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --ink:        #1c1815;
+    --ink-soft:   #2a2521;
+    --cream:      #f5f0e6;
+    --paper:      #fbf8f1;
+    --line:       #e0d7c4;
+    --muted:      #7a6f5f;
+    --terracotta: #a5482b;
+    --gold:       #b08a3e;
+    --sage:       #5f6b52;
+    --plum:       #5a2e3d;
+    --serif:      Georgia, 'Times New Roman', 'Iowan Old Style', serif;
+    --sans:       -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--sans);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.65;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ==================================================
+   HEADER / HERO
+   ================================================== */
+.hero {
+    min-height: 100vh;
+    background:
+        linear-gradient(180deg, rgba(28,24,21,0.55) 0%, rgba(28,24,21,0.85) 100%),
+        url('fotos/presentacion.jpeg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 24px;
+    color: var(--cream);
+}
+
+.hero-content {
+    max-width: 760px;
+}
+
+.hero-eyebrow {
+    display: inline-block;
+    font-size: 0.72rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+}
+
+.hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(3.2rem, 9vw, 6.5rem);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--cream);
+    margin-bottom: 28px;
+}
+
+.hero-rule {
+    display: block;
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto 28px;
+}
+
+.hero-sub {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    color: rgba(245,240,230,0.85);
+    margin-bottom: 44px;
+}
+
+.hero-link {
+    display: inline-block;
+    font-size: 0.78rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--cream);
+    text-decoration: none;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--gold);
+    transition: all 0.3s ease;
+}
+
+.hero-link:hover {
+    color: var(--gold);
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+/* ==================================================
+   NAVEGACIÓN
+   ================================================== */
+.nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+}
+
+.nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.nav a {
+    display: block;
+    padding: 22px 26px;
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--gold);
+    transition: width 0.3s ease;
+}
+
+.nav a:hover {
+    color: var(--terracotta);
+}
+
+.nav a:hover::after {
+    width: calc(100% - 52px);
+}
+
+/* ==================================================
+   SECCIONES
+   ================================================== */
+.section {
+    padding: 110px 32px;
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
+.section-head {
+    max-width: 720px;
+    margin: 0 auto 72px;
+    text-align: center;
+}
+
+.eyebrow {
+    display: block;
+    font-size: 0.72rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.section-head h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 22px;
+    line-height: 1.15;
+}
+
+.section-intro {
+    font-size: 1.02rem;
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 28px;
+}
+
+/* ==================================================
+   TARJETAS (FLIP con checkbox — funciona sin JS)
+   ================================================== */
+.card {
+    display: block;
+    position: relative;
+    height: 380px; /* Aumentado un poco para que respire la imagen */
+    cursor: pointer;
+    perspective: 1400px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.card-toggle {
+    display: none;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.85s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+.card-toggle:checked ~ .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+/* ---------- FRONT (Con Imagen de Fondo) ---------- */
+.card-front {
+    background-color: var(--ink);
+    background-size: cover;
+    background-position: center;
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--terracotta);
+    padding: 32px 28px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Texto abajo */
+    position: relative;
+    color: var(--cream);
+    transition: border-color 0.3s ease, box-shadow 0.4s ease;
+}
+
+/* Degradado oscuro para que el texto se lea sobre la foto */
+.card-front::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(28,24,21,0.1) 0%, rgba(28,24,21,0.85) 100%);
+    z-index: 1;
+}
+
+.card-front > * {
+    position: relative;
+    z-index: 2;
+}
+
+.card:hover .card-front {
+    box-shadow: 0 20px 44px -20px rgba(28,24,21,0.5);
+}
+
+.card-num {
+    position: absolute;
+    top: 26px;
+    right: 28px;
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    color: rgba(245,240,230,0.4);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1;
+}
+
+.card-eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(245,240,230,0.7);
+    margin-bottom: auto; /* Empuja el título hacia abajo */
+    padding-top: 40px;
+    font-weight: 500;
+}
+
+.card-title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 1.7rem;
+    line-height: 1.15;
+    color: var(--cream);
+    letter-spacing: -0.01em;
+    margin-bottom: 20px;
+}
+
+.card-line {
+    display: block;
+    width: 36px;
+    height: 1px;
+    background: var(--cream);
+    margin-bottom: 20px;
+}
+
+.card-cta {
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--cream);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.card:hover .card-cta {
+    color: var(--gold);
+}
+
+/* ---------- BACK (Información) ---------- */
+.card-back {
+    transform: rotateY(180deg);
+    background: var(--ink);
+    color: var(--cream);
+    padding: 36px 30px 30px;
+    display: flex;
+    flex-direction: column;
+    border-top: 3px solid var(--gold);
+}
+
+.card-close {
+    position: absolute;
+    top: 26px;
+    left: 28px;
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(245,240,230,0.5);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.card:hover .card-close {
+    color: var(--gold);
+}
+
+.card-num-back {
+    position: absolute;
+    top: 26px;
+    right: 28px;
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    color: rgba(245,240,230,0.14);
+    font-style: italic;
+    line-height: 1;
+}
+
+.card-back h4 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 1.35rem;
+    line-height: 1.2;
+    color: var(--cream);
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+    padding-top: 20px; /* Espacio para el botón cerrar */
+    padding-right: 40px;
+}
+
+.card-back p {
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: rgba(245,240,230,0.82);
+    flex: 1;
+    overflow-y: auto;
+}
+
+.card-back em {
+    color: var(--gold);
+    font-style: italic;
+}
+
+.card-meta {
+    display: block;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(245,240,230,0.15);
+    font-size: 0.68rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+}
+
+/* ==================================================
+   ACENTOS POR SECCIÓN
+   ================================================== */
+.section-atr .card-front { border-top-color: var(--terracotta); }
+.section-atr .card-back  { border-top-color: var(--terracotta); }
+.section-atr .card:hover .card-cta { color: var(--terracotta); }
+
+.section-cul {
+    background: #ece5d8;
+    max-width: 100%;
+}
+.section-cul .card-front { border-top-color: var(--plum); }
+.section-cul .card-back  { border-top-color: var(--plum); }
+.section-cul .card:hover .card-cta { color: var(--plum); }
+
+.section-art .card-front { border-top-color: var(--gold); }
+.section-art .card-back  { border-top-color: var(--gold); }
+.section-art .card:hover .card-cta { color: var(--gold); }
+
+.section-gas {
+    background: #e8ebe2;
+    max-width: 100%;
+}
+.section-gas .card-front { border-top-color: var(--sage); }
+.section-gas .card-back  { border-top-color: var(--sage); }
+.section-gas .card:hover .card-cta { color: var(--sage); }
+
+/* En secciones con fondo, mantener el grid centrado */
+.section-cul .grid,
+.section-gas .grid {
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
+.section-cul .section-head,
+.section-gas .section-head {
+    max-width: 720px;
+}
+
+/* ==================================================
+   INFORMACIÓN PRÁCTICA
+   ================================================== */
+.section-info {
+    background: var(--cream);
+    max-width: 100%;
+    padding: 110px 32px;
+}
+
+.section-info .section-head {
+    max-width: 720px;
+    margin: 0 auto 72px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 0;
+    max-width: 1240px;
+    margin: 0 auto;
+    border-top: 1px solid var(--line);
+    border-left: 1px solid var(--line);
+}
+
+.info-item {
+    padding: 48px 36px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: var(--paper);
+    transition: background 0.3s ease;
+}
+
+.info-item:hover {
+    background: #fff;
+}
+
+.info-num {
+    display: block;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.4rem;
+    color: var(--gold);
+    margin-bottom: 20px;
+    line-height: 1;
+}
+
+.info-item h3 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 1.3rem;
+    color: var(--ink);
+    margin-bottom: 14px;
+    letter-spacing: -0.01em;
+}
+
+.info-item p {
+    font-size: 0.92rem;
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+/* ==================================================
+   CTA
+   ================================================== */
+.cta {
+    background: var(--ink);
+    color: var(--cream);
+    text-align: center;
+    padding: 130px 32px;
+}
+
+.cta-eyebrow {
+    display: inline-block;
+    font-size: 0.72rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+}
+
+.cta h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    letter-spacing: -0.015em;
+    color: var(--cream);
+    margin-bottom: 24px;
+    line-height: 1.1;
+}
+
+.cta p {
+    max-width: 620px;
+    margin: 0 auto 48px;
+    font-size: 1.05rem;
+    color: rgba(245,240,230,0.7);
+    line-height: 1.7;
+}
+
+.cta-btn {
+    display: inline-block;
+    padding: 18px 44px;
+    border: 1px solid var(--gold);
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: all 0.35s ease;
+}
+
+.cta-btn:hover {
+    background: var(--gold);
+    color: var(--ink);
+}
+
+/* ==================================================
+   FOOTER
+   ================================================== */
+.footer {
+    background: #14110e;
+    color: rgba(245,240,230,0.55);
+    text-align: center;
+    padding: 72px 32px 56px;
+    font-size: 0.85rem;
+}
+
+.footer-brand {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    color: var(--cream);
+    margin-bottom: 18px;
+    letter-spacing: 0.02em;
+}
+
+.footer-note {
+    max-width: 520px;
+    margin: 0 auto 28px;
+    line-height: 1.7;
+}
+
+.footer-copy {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,240,230,0.35);
+    padding-top: 24px;
+    border-top: 1px solid rgba(245,240,230,0.08);
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* ==================================================
+   RESPONSIVE
+   ================================================== */
+@media (max-width: 720px) {
+    .section {
+        padding: 80px 20px;
+    }
+
+    .section-head {
+        margin-bottom: 52px;
+    }
+
+    .nav a {
+        padding: 16px 12px;
+        font-size: 0.68rem;
+        letter-spacing: 0.18em;
+    }
+
+    .nav a:hover::after {
+        width: calc(100% - 24px);
+    }
+
+    .card {
+        height: 360px;
+    }
+
+    .card-front {
+        padding: 28px 24px 24px;
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+    }
+
+    .card-back {
+        padding: 30px 24px 24px;
+    }
+
+    .info-item {
+        padding: 36px 26px;
+    }
+
+    .cta {
+        padding: 90px 24px;
+    }
+
+    .hero {
+        min-height: 90vh;
+    }
+}
