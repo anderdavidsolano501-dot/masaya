@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Reserva hoteles y hospedajes en Masaya, Nicaragua.">
+    <title>Reservas · Masaya</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body class="pagina-reserva">
+
+    <!-- ==================================================
+         BARRA DE NAVEGACIÓN
+         ================================================== -->
+    <nav class="nav">
+        <ul>
+            <li><a href="index.html">← Inicio</a></li>
+            <li><a href="index.html#atracciones" class="oculto-movil">Atracciones</a></li>
+            <li><a href="index.html#cultura" class="oculto-movil">Cultura</a></li>
+            <li><a href="index.html#artesanias" class="oculto-movil">Artesanías</a></li>
+            <li><a href="index.html#gastronomia" class="oculto-movil">Gastronomía</a></li>
+            <li><a href="index.html#informacion" class="oculto-movil">Información</a></li>
+        </ul>
+    </nav>
+
+    <!-- ==================================================
+         ENCABEZADO DE LA PÁGINA
+         ================================================== -->
+    <header class="reserva-hero">
+        <span class="eyebrow">Reserva en línea</span>
+        <h1>Registra tu estadía</h1>
+        <p>Despliega cada bloque, completa los datos y envía. Los campos con <strong>*</strong> son obligatorios.</p>
+
+        <!-- BOTÓN VOLVER (debajo del hero) -->
+        <a href="index.html" class="btn-volver">← Volver al inicio</a>
+    </header>
+
+    <!-- ==================================================
+         FORMULARIO DE RESERVA
+         ================================================== -->
+    <main class="reserva-pagina">
+        <form action="#" method="post" class="reserva-form">
+
+            <!-- ========== BLOQUE 01 · ESTABLECIMIENTO ========== -->
+            <section class="acordeon">
+                <input type="checkbox" id="bloque-1" class="acordeon-toggle" checked>
+                <label for="bloque-1" class="acordeon-header">
+                    <span class="acordeon-num">01</span>
+                    <span class="acordeon-title">Establecimiento</span>
+                    <span class="acordeon-icon">+</span>
+                </label>
+                <div class="acordeon-body">
+                    <div class="form-grid">
+                        <div class="form-campo span-2">
+                            <label for="nombre_establecimiento">Nombre del hotel / hospedaje *</label>
+                            <input type="text" id="nombre_establecimiento" name="nombre_establecimiento"
+                                   required minlength="3" placeholder="Ej: Hotel Mirador Masaya">
+                        </div>
+
+                        <div class="form-campo">
+                            <label for="tipo_hospedaje">Tipo de hospedaje *</label>
+                            <select id="tipo_hospedaje" name="tipo_hospedaje" required>
+                                <option value="">— Seleccione —</option>
+                                <option>Hotel</option>
+                                <option>Hostal</option>
+                                <option>Eco-lodge</option>
+                                <option>Casa de huéspedes</option>
+                                <option>Cabaña</option>
+                                <option>Glamping</option>
+                            </select>
+                        </div>
+
+                        <div class="form-campo">
+                            <label for="categoria">Categoría *</label>
+                            <select id="categoria" name="categoria" required>
+                                <option value="">— Seleccione —</option>
+                                <option>1 estrella</option>
+                                <option>2 estrellas</option>
+                                <option>3 estrellas</option>
+                                <option>4 estrellas</option>
+                                <option>5 estrellas</option>
+                            </select>
+                        </div>
+
+                        <div class="form-campo">
+                            <label for="municipio">Municipio *</label>
+                            <select id="municipio" name="municipio" required>
+                                <option value="">— Seleccione —</option>
+                                <option>Masaya</option>
+                                <option>Catarina</option>
+                                <option>San Juan de Oriente</option>
+                                <option>Nindirí</option>
+                                <option>Tisma</option>
+                                <option>La Concepción</option>
+                                <option>Niquinohomo</option>
+                            </select>
+                        </div>
+
+                        <div class="form-campo">
+                            <label for="telefono">Teléfono *</label>
+                            <input type="tel" id="telefono" name="telefono" required
+                                   pattern="[0-9+\-() ]{8,20}" placeholder="+505 8888 8888">
+                        </div>
+
+                        <div class="form-campo span-2">
+                            <label for="direccion">Dirección exacta *</label>
+                            <input type="text" id="direccion" name="direccion" required
+                                   placeholder="Ej: De la iglesia San Jerónimo 2 c. al norte">
+                        </div>
+
+                        <div class="form-campo">
+                            <label for="correo_establecimiento">Correo del establecimiento *</label>
+                            <input type="email" id="correo_establecimiento" name="correo_establecimiento"
+                                   required placeholder="contacto@hotel.com">
+                        </div>
+
+                        <div class="form-campo">
+                            <label for="sitio_web">Sitio web</label>
+                            <input type="url" id="sitio_web" name="sitio_web" placeholder="https://...">
+                        </div>
+
+                        <div class="form-campo">
+                            <label for="representante">Representante / contacto</label>
+                            <input type="text" id="representante" name="representante"
+                                   placeholder="Nombre completo">
+                        </div>
+
+                        <div class="form-campo">
+                            <label for="ruc">RUC / Registro turístico</label>
+                            <input type="text" id="ruc" name="ruc" placeholder="Opcional">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== BLOQUE 02 · HABITACIÓN Y SERVICIOS ========== -->
+            <section class="acordeon">
+                <input type="checkbox" id="bloque-2" class="acordeon-toggle">
+                <label for="bloque-2" class="acordeon-header">
+                    <span class="acordeon-num">02</span>
+                    <span class="acordeon-title">Habitación y servicios</span>
+                    <span class="acordeon-icon">+</span>
+                </label>
+                <div class="acordeon-body">
+                    <div class="form-grid">
+                        <div class="form-campo">
+                            <label for="tipo_habitacion">Tipo de habitación *</label>
+                            <select id="tipo_habitacion" name="tipo_habitacion" required>
+                                <option value="">— Seleccione —</option>
+                                <option>Individual</option>
+                                <option>Doble</option>
+                                <option>Matrimonial</option>
+                                <option>Familiar</option>
+                                <option>Suite</option>
+                            </select>
+                        </div>
+
+                        <div class="form-campo">
+                            <label for="num_habitaciones">Habitaciones disponibles *</label>
+                            <input type="number" id="num_habitaciones" name="num_habitaciones"
+                                   min="1" max="200" required placeholder="1">
+                        </div>
+
+                        <div class="form-campo">
+                            <label for="capacidad_max">Capacidad máxima (personas) *</label>
+                            <input type="number" id="capacidad_max" name="capacidad_max"
+                                   min="1" max="20" required placeholder="2">
+                        </div>
+
+                        <div class="form-campo">
+                            <label for="precio">Precio por noche (USD) *</label>
+                            <input type="number" id="precio" name="precio"
+                                   min="1" step="0.01" required placeholder="35.00">
+                        </div>
+                    </div>
+
+                    <div class="form-campo bloque-servicios">
+                        <span class="form-label">Servicios incluidos</span>
+                        <div class="checkbox-grid">
+                            <label><input type="checkbox" name="servicios" value="WiFi"> WiFi</label>
+                            <label><input type="checkbox" name="servicios" value="A/C"> Aire acondicionado</label>
+                            <label><input type="checkbox" name="servicios" value="TV"> TV por cable</label>
+                            <label><input type="checkbox" name="servicios" value="Bano"> Baño privado</label>
+                            <label><input type="checkbox" name="servicios" value="Desayuno"> Desayuno</label>
+                            <label><input type="checkbox" name="servicios" value="Piscina"> Piscina</label>
+                            <label><input type="checkbox" name="servicios" value="Parqueo"> Estacionamiento</label>
+                            <label><input type="checkbox" name="servicios" value="Accesible"> Accesibilidad</label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== BLOQUE 03 · DATOS DEL HUÉSPED ========== -->
+            <section class="acordeon">
+                <input type="checkbox" id="bloque-3" class="acordeon-toggle">
+                <label for="bloque-3" class="acordeon-header">
+                    <span class="acordeon-num">03</span>
+                    <span class="acordeon-title">Datos del huésped</span>
+                    <span class="acordeon-icon">+</span>
+                </label>
+                <div class="acordeon-body">
+                    <div class="form-grid">
+                        <div class="form-campo span-2">
+                            <label for="nombre_huesped">Nombre completo *</label>
+                            <input type="text" id="nombre_huesped" name="nombre_huesped"
+                                   required minlength="3" placeholder="Nombres y apellidos">
+                        </div>
+
+                        <div class="form-campo">
+                            <label for="tipo_documento">Tipo de documento *</label>
+                            <select id="tipo_documento" name="tipo_documento" required>
+                                <option value="">— Seleccione —</option>
+                                <option>Cédula</option>
+                                <option>Pasaporte</option>
+                                <option>Residencia</option>
+                            </select>
+                        </div>
+
+                        <div class="form-campo">
+                            <label for="num_documento">Número de documento *</label>
+                            <input type="text" id="num_documento" name="num_documento"
+                                   required pattern="[A-Za-z0-9\-]{5,20}" placeholder="001-123456-0000A">
+                        </div>
+
+                        <div class="form-campo">
+                            <label for="nacionalidad">Nacionalidad *</label>
+                            <input type="text" id="nacionalidad" name="nacionalidad"
+                                   required placeholder="Nicaragüense">
+                        </div>
+
+                        <div class="form-campo">
+                            <label for="fecha_nacimiento">Fecha de nacimiento</label>
+                            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento">
+                        </div>
+
+                        <div class="form-campo">
+                            <label for="telefono_huesped">Teléfono / WhatsApp *</label>
+                            <input type="tel" id="telefono_huesped" name="telefono_huesped"
+                                   required pattern="[0-9+\-() ]{8,20}" placeholder="+505 8888 8888">
+                        </div>
+
+                        <div class="form-campo">
+                            <label for="correo_huesped">Correo electrónico *</label>
+                            <input type="email" id="correo_huesped" name="correo_huesped"
+                                   required placeholder="tucorreo@ejemplo.com">
+                        </div>
+
+                        <div class="form-campo span-2">
+                            <label for="procedencia">Dirección de procedencia</label>
+                            <input type="text" id="procedencia" name="procedencia"
+                                   placeholder="Ciudad / País de origen">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== BLOQUE 04 · DETALLES DE LA RESERVA ========== -->
+            <section class="acordeon">
+                <input type="checkbox" id="bloque-4" class="acordeon-toggle">
+                <label for="bloque-4" class="acordeon-header">
+                    <span class="acordeon-num">04</span>
+                    <span class="acordeon-title">Detalles de la reserva</span>
+                    <span class="acordeon-icon">+</span>
+                </label>
+                <div class="acordeon-body">
+                    <div class="form-grid">
+                        <div class="form-campo">
+                            <label for="fecha_entrada">Fecha de entrada (check-in) *</label>
+                            <input type="date" id="fecha_entrada" name="fecha_entrada" required>
+                        </div>
+
+                        <div class="form-campo">
+                            <label for="fecha_salida">Fecha de salida (check-out) *</label>
+                            <input type="date" id="fecha_salida" name="fecha_salida" required>
+                        </div>
+
+                        <div class="form-campo">
+                            <label for="num_adultos">N° de adultos *</label>
+                            <input type="number" id="num_adultos" name="num_adultos"
+                                   min="1" max="20" required placeholder="2">
+                        </div>
+
+                        <div class="form-campo">
+                            <label for="num_ninos">N° de niños</label>
+                            <input type="number" id="num_ninos" name="num_ninos"
+                                   min="0" max="10" placeholder="0">
+                        </div>
+
+                        <div class="form-campo">
+                            <label for="habitaciones_reserva">Habitaciones a reservar *</label>
+                            <input type="number" id="habitaciones_reserva" name="habitaciones_reserva"
+                                   min="1" max="20" required placeholder="1">
+                        </div>
+
+                        <div class="form-campo">
+                            <label for="tipo_habitacion_reserva">Tipo de habitación solicitada *</label>
+                            <select id="tipo_habitacion_reserva" name="tipo_habitacion_reserva" required>
+                                <option value="">— Seleccione —</option>
+                                <option>Individual</option>
+                                <option>Doble</option>
+                                <option>Matrimonial</option>
+                                <option>Familiar</option>
+                                <option>Suite</option>
+                            </select>
+                        </div>
+
+                        <div class="form-campo">
+                            <label for="metodo_pago">Método de pago *</label>
+                            <select id="metodo_pago" name="metodo_pago" required>
+                                <option value="">— Seleccione —</option>
+                                <option>Efectivo</option>
+                                <option>Tarjeta de crédito / débito</option>
+                                <option>Transferencia bancaria</option>
+                            </select>
+                        </div>
+
+                        <div class="form-campo span-2">
+                            <label for="peticiones">Peticiones especiales</label>
+                            <textarea id="peticiones" name="peticiones" rows="3"
+                                      placeholder="Ej: Habitación en piso alto, cuna para bebé, etc."></textarea>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== BLOQUE 05 · INFORMACIÓN ADICIONAL ========== -->
+            <section class="acordeon">
+                <input type="checkbox" id="bloque-5" class="acordeon-toggle">
+                <label for="bloque-5" class="acordeon-header">
+                    <span class="acordeon-num">05</span>
+                    <span class="acordeon-title">Información adicional</span>
+                    <span class="acordeon-icon">+</span>
+                </label>
+                <div class="acordeon-body">
+                    <div class="form-grid">
+                        <div class="form-campo">
+                            <label for="como_nos_conocio">¿Cómo se enteró del establecimiento? *</label>
+                            <select id="como_nos_conocio" name="como_nos_conocio" required>
+                                <option value="">— Seleccione —</option>
+                                <option>Redes sociales</option>
+                                <option>Recomendación</option>
+                                <option>Sitio web</option>
+                                <option>Agencia de viajes</option>
+                                <option>Otro</option>
+                            </select>
+                        </div>
+
+                        <div class="form-campo">
+                            <label for="cliente_frecuente">¿Es cliente frecuente? *</label>
+                            <select id="cliente_frecuente" name="cliente_frecuente" required>
+                                <option value="">— Seleccione —</option>
+                                <option>Sí</option>
+                                <option>No</option>
+                            </select>
+                        </div>
+
+                        <div class="form-campo">
+                            <label for="transporte">¿Requiere transporte desde el aeropuerto? *</label>
+                            <select id="transporte" name="transporte" required>
+                                <option value="">— Seleccione —</option>
+                                <option>Sí</option>
+                                <option>No</option>
+                            </select>
+                        </div>
+
+                        <div class="form-campo">
+                            <label for="alimentacion">¿Requiere servicio de alimentación? *</label>
+                            <select id="alimentacion" name="alimentacion" required>
+                                <option value="">— Seleccione —</option>
+                                <option>Solo desayuno</option>
+                                <option>Pensión completa</option>
+                                <option>Media pensión</option>
+                                <option>No requiere</option>
+                            </select>
+                        </div>
+
+                        <div class="form-campo span-2">
+                            <label for="tour">Tour adicional de interés</label>
+                            <select id="tour" name="tour">
+                                <option value="">— Ninguno —</option>
+                                <option>Volcán Masaya (nocturno)</option>
+                                <option>Laguna de Apoyo</option>
+                                <option>Mirador de Catarina</option>
+                                <option>Barrio Monimbó</option>
+                                <option>San Juan de Oriente (cerámica)</option>
+                                <option>Ruta del folclore</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <label class="check-line">
+                        <input type="checkbox" name="promociones" value="si">
+                        Deseo recibir promociones y ofertas por correo electrónico.
+                    </label>
+
+                    <label class="check-line">
+                        <input type="checkbox" name="terminos" value="acepto" required>
+                        Acepto los términos y condiciones del servicio. *
+                    </label>
+                </div>
+            </section>
+
+            <!-- ========== BOTONES DE ACCIÓN ========== -->
+            <div class="form-acciones">
+                <a href="index.html" class="btn-secundario">← Cancelar y volver</a>
+                <button type="submit" class="btn-primario">Enviar reserva</button>
+            </div>
+
+        </form>
+    </main>
+
+    <!-- ==================================================
+         FOOTER
+         ================================================== -->
+    <footer class="footer">
+        <p class="footer-brand">Masaya · Nicaragua</p>
+        <p class="footer-note">Guía turística del departamento de Masaya. Tierra de flores y cuna del folclore.</p>
+        <p class="footer-copy">© 2026 — Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>

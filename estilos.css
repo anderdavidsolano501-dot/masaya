@@ -1,7 +1,11 @@
 /* ==================================================
    MASAYA · Guía de viaje — Diseño editorial
+   Hoja de estilos unificada (index + reserva)
    ================================================== */
 
+/* ==================================================
+   01 · RESET Y VARIABLES
+   ================================================== */
 * {
     margin: 0;
     padding: 0;
@@ -37,7 +41,7 @@ body {
 }
 
 /* ==================================================
-   HEADER / HERO
+   02 · HEADER / HERO (index)
    ================================================== */
 .hero {
     min-height: 100vh;
@@ -110,7 +114,7 @@ body {
 }
 
 /* ==================================================
-   NAVEGACIÓN
+   03 · NAVEGACIÓN (compartida)
    ================================================== */
 .nav {
     position: sticky;
@@ -125,6 +129,7 @@ body {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    align-items: center;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
@@ -163,8 +168,27 @@ body {
     width: calc(100% - 52px);
 }
 
+/* Botón Reservas destacado */
+.nav-reserva {
+    background: var(--terracotta);
+    color: var(--cream) !important;
+    margin-left: 12px;
+    padding: 12px 22px !important;
+    border-radius: 2px;
+    transition: background 0.3s ease;
+}
+
+.nav-reserva:hover {
+    background: var(--ink);
+    color: var(--cream) !important;
+}
+
+.nav-reserva::after {
+    display: none;
+}
+
 /* ==================================================
-   SECCIONES
+   04 · SECCIONES GENERALES (index)
    ================================================== */
 .section {
     padding: 110px 32px;
@@ -211,12 +235,12 @@ body {
 }
 
 /* ==================================================
-   TARJETAS (FLIP con checkbox — funciona sin JS)
+   05 · TARJETAS FLIP (index)
    ================================================== */
 .card {
     display: block;
     position: relative;
-    height: 380px; /* Aumentado un poco para que respire la imagen */
+    height: 380px;
     cursor: pointer;
     perspective: 1400px;
     -webkit-tap-highlight-color: transparent;
@@ -248,7 +272,7 @@ body {
     overflow: hidden;
 }
 
-/* ---------- FRONT (Con Imagen de Fondo) ---------- */
+/* ---------- FRONT ---------- */
 .card-front {
     background-color: var(--ink);
     background-size: cover;
@@ -258,13 +282,12 @@ body {
     padding: 32px 28px 28px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end; /* Texto abajo */
+    justify-content: flex-end;
     position: relative;
     color: var(--cream);
     transition: border-color 0.3s ease, box-shadow 0.4s ease;
 }
 
-/* Degradado oscuro para que el texto se lea sobre la foto */
 .card-front::before {
     content: '';
     position: absolute;
@@ -299,7 +322,7 @@ body {
     letter-spacing: 0.28em;
     text-transform: uppercase;
     color: rgba(245,240,230,0.7);
-    margin-bottom: auto; /* Empuja el título hacia abajo */
+    margin-bottom: auto;
     padding-top: 40px;
     font-weight: 500;
 }
@@ -335,7 +358,7 @@ body {
     color: var(--gold);
 }
 
-/* ---------- BACK (Información) ---------- */
+/* ---------- BACK ---------- */
 .card-back {
     transform: rotateY(180deg);
     background: var(--ink);
@@ -381,7 +404,7 @@ body {
     color: var(--cream);
     letter-spacing: -0.01em;
     margin-bottom: 16px;
-    padding-top: 20px; /* Espacio para el botón cerrar */
+    padding-top: 20px;
     padding-right: 40px;
 }
 
@@ -411,7 +434,7 @@ body {
 }
 
 /* ==================================================
-   ACENTOS POR SECCIÓN
+   06 · ACENTOS POR SECCIÓN
    ================================================== */
 .section-atr .card-front { border-top-color: var(--terracotta); }
 .section-atr .card-back  { border-top-color: var(--terracotta); }
@@ -437,7 +460,6 @@ body {
 .section-gas .card-back  { border-top-color: var(--sage); }
 .section-gas .card:hover .card-cta { color: var(--sage); }
 
-/* En secciones con fondo, mantener el grid centrado */
 .section-cul .grid,
 .section-gas .grid {
     max-width: 1240px;
@@ -450,7 +472,7 @@ body {
 }
 
 /* ==================================================
-   INFORMACIÓN PRÁCTICA
+   07 · INFORMACIÓN PRÁCTICA (index)
    ================================================== */
 .section-info {
     background: var(--cream);
@@ -511,7 +533,7 @@ body {
 }
 
 /* ==================================================
-   CTA
+   08 · CTA (index)
    ================================================== */
 .cta {
     background: var(--ink);
@@ -566,7 +588,7 @@ body {
 }
 
 /* ==================================================
-   FOOTER
+   09 · FOOTER (compartido)
    ================================================== */
 .footer {
     background: #14110e;
@@ -602,9 +624,383 @@ body {
 }
 
 /* ==================================================
-   RESPONSIVE
+   10 · PÁGINA DE RESERVA — ESTRUCTURA
    ================================================== */
+.pagina-reserva {
+    background: var(--cream);
+    min-height: 100vh;
+}
+
+.reserva-hero {
+    background: var(--ink);
+    color: var(--cream);
+    text-align: center;
+    padding: 100px 40px 80px;
+    border-bottom: 4px solid var(--terracotta);
+}
+
+.reserva-hero .eyebrow {
+    color: var(--gold);
+    margin-bottom: 18px;
+}
+
+.reserva-hero h1 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    letter-spacing: -0.015em;
+    color: var(--cream);
+    margin-bottom: 18px;
+    line-height: 1.15;
+}
+
+.reserva-hero p {
+    max-width: 560px;
+    margin: 0 auto;
+    font-size: 1rem;
+    color: rgba(245,240,230,0.75);
+    line-height: 1.7;
+}
+
+.reserva-hero strong {
+    color: var(--gold);
+}
+
+/* Botón Volver dentro del hero */
+.btn-volver {
+    display: inline-block;
+    margin-top: 34px;
+    padding: 14px 34px;
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--cream);
+    text-decoration: none;
+    border: 1px solid rgba(245,240,230,0.45);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.btn-volver:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--ink);
+}
+
+/* Contenedor del formulario */
+.reserva-pagina {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 80px 40px 110px;
+}
+
+.reserva-form {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--terracotta);
+    padding: 56px 56px 50px;
+    box-shadow: 0 20px 50px -25px rgba(28,24,21,0.18);
+}
+
+/* ==================================================
+   11 · ACORDEÓN (bloques ocultos sin JS)
+   ================================================== */
+.acordeon {
+    border-top: 1px solid var(--line);
+}
+
+.acordeon:first-of-type {
+    border-top: none;
+}
+
+.acordeon-toggle {
+    display: none;
+}
+
+.acordeon-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 28px 0;
+    cursor: pointer;
+    user-select: none;
+    transition: padding-left 0.3s ease;
+}
+
+.acordeon-header:hover {
+    padding-left: 8px;
+}
+
+.acordeon-num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--terracotta);
+    min-width: 34px;
+    transition: color 0.3s ease;
+}
+
+.acordeon-title {
+    flex: 1;
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    transition: color 0.3s ease;
+}
+
+.acordeon-icon {
+    font-family: var(--serif);
+    font-size: 1.7rem;
+    color: var(--muted);
+    line-height: 1;
+    transition: transform 0.4s ease, color 0.3s ease;
+    display: inline-block;
+}
+
+.acordeon-toggle:checked ~ .acordeon-header .acordeon-icon {
+    transform: rotate(45deg);
+    color: var(--terracotta);
+}
+
+.acordeon-toggle:checked ~ .acordeon-header .acordeon-title {
+    color: var(--terracotta);
+}
+
+.acordeon-toggle:checked ~ .acordeon-header .acordeon-num {
+    color: var(--gold);
+}
+
+.acordeon-body {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.55s ease, opacity 0.4s ease, padding 0.4s ease;
+    padding: 0;
+}
+
+.acordeon-toggle:checked ~ .acordeon-body {
+    max-height: 2600px;
+    opacity: 1;
+    padding-bottom: 34px;
+}
+
+/* ==================================================
+   12 · CAMPOS DEL FORMULARIO
+   ================================================== */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 26px 28px;
+}
+
+.form-campo {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.form-campo.span-2 {
+    grid-column: span 2;
+}
+
+.form-campo label,
+.form-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.form-campo input,
+.form-campo select,
+.form-campo textarea {
+    font-family: var(--sans);
+    font-size: 1rem;
+    color: var(--ink);
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--line);
+    padding: 12px 2px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    width: 100%;
+    min-width: 0;
+}
+
+.form-campo textarea {
+    border: 1px solid var(--line);
+    padding: 14px;
+    resize: vertical;
+    min-height: 90px;
+    border-radius: 2px;
+    font-family: var(--sans);
+}
+
+.form-campo input:focus,
+.form-campo select:focus,
+.form-campo textarea:focus {
+    border-bottom-color: var(--terracotta);
+}
+
+.form-campo textarea:focus {
+    border-color: var(--terracotta);
+}
+
+.form-campo input:invalid:not(:placeholder-shown) {
+    border-bottom-color: #c0392b;
+}
+
+.form-campo input::placeholder,
+.form-campo textarea::placeholder {
+    color: #b8ac99;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+.bloque-servicios {
+    margin-top: 30px;
+}
+
+/* ==================================================
+   13 · CHECKBOXES
+   ================================================== */
+.checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 12px 20px;
+    margin-top: 6px;
+}
+
+.checkbox-grid label {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 0.88rem;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    font-weight: 400;
+    color: var(--ink);
+    cursor: pointer;
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--line);
+}
+
+.checkbox-grid input[type="checkbox"] {
+    accent-color: var(--terracotta);
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.check-line {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: var(--ink);
+    margin-top: 20px;
+    cursor: pointer;
+    line-height: 1.55;
+}
+
+.check-line input[type="checkbox"] {
+    accent-color: var(--terracotta);
+    width: 16px;
+    height: 16px;
+    margin-top: 3px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+/* ==================================================
+   14 · BOTONES DE ACCIÓN
+   ================================================== */
+.form-acciones {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    margin-top: 48px;
+    padding-top: 34px;
+    border-top: 1px solid var(--line);
+    flex-wrap: wrap;
+}
+
+.btn-primario,
+.btn-secundario {
+    display: inline-block;
+    padding: 16px 40px;
+    font-size: 0.72rem;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid var(--ink);
+    cursor: pointer;
+    font-family: var(--sans);
+    transition: all 0.3s ease;
+    border-radius: 2px;
+    white-space: nowrap;
+}
+
+.btn-primario {
+    background: var(--ink);
+    color: var(--cream);
+}
+
+.btn-primario:hover {
+    background: var(--terracotta);
+    border-color: var(--terracotta);
+}
+
+.btn-secundario {
+    background: transparent;
+    color: var(--ink);
+}
+
+.btn-secundario:hover {
+    background: var(--ink);
+    color: var(--cream);
+}
+
+/* ==================================================
+   15 · CLASES UTILITARIAS DE VISIBILIDAD
+   ================================================== */
+.oculto         { display: none !important; }
+.oculto-movil   { display: block; }
+.oculto-desktop { display: none; }
+
+/* ==================================================
+   16 · RESPONSIVE
+   ================================================== */
+
+/* ---------- Tablet (960px) ---------- */
+@media (max-width: 960px) {
+    .reserva-hero {
+        padding: 80px 30px 65px;
+    }
+
+    .reserva-pagina {
+        padding: 60px 24px 90px;
+    }
+
+    .reserva-form {
+        padding: 44px 36px 40px;
+    }
+}
+
+/* ---------- Móvil (720px) ---------- */
 @media (max-width: 720px) {
+
+    /* Utilidades */
+    .oculto-movil   { display: none !important; }
+    .oculto-desktop { display: block; }
+
+    /* Secciones generales */
     .section {
         padding: 80px 20px;
     }
@@ -613,16 +1009,27 @@ body {
         margin-bottom: 52px;
     }
 
+    /* Navegación */
+    .nav ul {
+        padding: 0 10px;
+    }
+
     .nav a {
-        padding: 16px 12px;
-        font-size: 0.68rem;
-        letter-spacing: 0.18em;
+        padding: 14px 10px;
+        font-size: 0.65rem;
+        letter-spacing: 0.15em;
     }
 
     .nav a:hover::after {
-        width: calc(100% - 24px);
+        width: calc(100% - 20px);
     }
 
+    .nav-reserva {
+        margin: 6px 0;
+        padding: 10px 18px !important;
+    }
+
+    /* Tarjetas flip */
     .card {
         height: 360px;
     }
@@ -639,15 +1046,97 @@ body {
         padding: 30px 24px 24px;
     }
 
+    /* Info práctica */
     .info-item {
         padding: 36px 26px;
     }
 
+    /* CTA */
     .cta {
         padding: 90px 24px;
     }
 
+    /* Hero principal */
     .hero {
         min-height: 90vh;
+    }
+
+    /* ----- RESERVA ----- */
+    .reserva-hero {
+        padding: 60px 22px 50px;
+    }
+
+    .reserva-hero h1 {
+        font-size: 1.9rem;
+    }
+
+    .btn-volver {
+        margin-top: 26px;
+        padding: 12px 26px;
+        font-size: 0.68rem;
+    }
+
+    .reserva-pagina {
+        padding: 40px 16px 70px;
+    }
+
+    .reserva-form {
+        padding: 32px 22px 30px;
+    }
+
+    .acordeon-header {
+        padding: 22px 0;
+        gap: 12px;
+    }
+
+    .acordeon-title {
+        font-size: 1.08rem;
+    }
+
+    .acordeon-icon {
+        font-size: 1.5rem;
+    }
+
+    /* Formulario */
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .form-campo.span-2 {
+        grid-column: span 1;
+    }
+
+    .checkbox-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px 14px;
+    }
+
+    /* Botones del formulario */
+    .form-acciones {
+        flex-direction: column-reverse;
+        gap: 12px;
+    }
+
+    .btn-primario,
+    .btn-secundario {
+        width: 100%;
+        text-align: center;
+        padding: 15px 20px;
+    }
+}
+
+/* ---------- Móvil pequeño (420px) ---------- */
+@media (max-width: 420px) {
+    .checkbox-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .acordeon-title {
+        font-size: 1rem;
+    }
+
+    .reserva-hero h1 {
+        font-size: 1.6rem;
     }
 }
